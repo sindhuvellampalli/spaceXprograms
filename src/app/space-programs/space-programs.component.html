@@ -1,0 +1,102 @@
+<ngx-spinner [fullScreen]="true" type="ball-clip-rotate-multiple" size="medium">
+    <p class="loading">Loading...</p>
+</ngx-spinner>
+<div class="main-container col-lg-12 col-md-12 col-sm-12">
+    <div class="heading">SpaceX Launch Programs</div>
+
+    <div class="row">
+        <div class="left-container col-lg-2 col-md-3 col-sm-12">
+            <div class="filter-text">Filters</div>
+            <div class="launch-year-text">Launch Year</div>
+            <div class="launch-btn">
+                <div *ngFor="let data of years" class="mb-2 w-100">
+
+                    <div class="row ml-0 mb-2">
+
+                        <div class=" col-6" *ngFor="let item of data">
+                            <button type="button" (click)="yearSelected(item)" [ngClass]="{active: item.active}"
+                                class="btn btn-success btn-sm launch-land-btn">
+                                {{item.year}}</button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="launch-year-text">Successful Launch</div>
+            <div class="launch-btn">
+                <div class="row ml-0 mb-2">
+
+                    <div class=" col-6" *ngFor="let item of launchArray">
+                        <button _ngcontent-oxp-c18="" type="button" (click)="getLaunchData(item.isLaunched)"
+                            [ngClass]="{active: item.active}" class="btn btn-success btn-sm launch-land-btn">
+                            {{item.isLaunched}}</button>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="launch-year-text">Successful Landing</div>
+            <div class="launch-btn">
+                <div class="row ml-0 mb-2">
+
+                    <div class=" col-6" *ngFor="let item of landArray">
+                        <button type="button" (click)="getLandData(item.isLanded)" [ngClass]="{active: item.active}"
+                            class="btn btn-success btn-sm launch-land-btn">
+                            {{item.isLanded}}</button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="right-container col-lg-10 col-md-9 col-sm-12">
+            <div class="card-container">
+                <div class="card" *ngFor="let item of spaceData">
+                    <img class="card-img-top" src="{{item.links.mission_patch_small}}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{item.mission_name}}#{{item.flight_number}}</h5>
+                        <div class="col-12 pl-0">
+                            <div class="row">
+                                <div *ngIf="item.mission_id.length !== 0">
+                                    <div class="col-12 mb-2" style="font-weight: bold">
+                                        Mission Ids:
+                                    </div>
+                                    <div class="col-12 launch-result">
+                                        <ul>
+                                            <li *ngFor="let data of item.mission_id">{{data}}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-6 mb-2" style="font-weight: bold">
+                                    Launch Year:
+                                </div>
+                                <div class="col-6 launch-result">
+                                    {{item.launch_year}}
+                                </div>
+                                <div class="col-6 mb-2" style="font-weight: bold">
+                                    Successful Lunch:
+                                </div>
+                                <div class="col-6 launch-result">
+                                    {{item.launch_success}}
+                                </div>
+                                <div class="col-6 mb-2" style="font-weight: bold">
+                                    Successful Landing:
+                                </div>
+                                <div class="col-6 launch-result">
+                                    {{item.tbd}}
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div *ngIf="spaceData.length !== 0" class="developed-text">Developed By: Sai Sindhu Vellampalli</div>
+        </div>
+    </div>
+</div>
