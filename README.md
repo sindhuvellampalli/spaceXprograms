@@ -1,6 +1,10 @@
-# Sapient
+# SapceXprograms
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.1.
+
+## Clone the project
+
+The command to clone the project is git clone -b master https://github.com/sindhuvellampalli/spacexprograms.git
 
 ## Development server
 
